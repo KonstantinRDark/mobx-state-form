@@ -1,9 +1,16 @@
-import { version } from 'typescript';
+import {observable} from 'mobx';
 
-const enum TEST {
+enum TEST {
   A = 1,
 }
 
-console.log(version, TEST.A, new Map<string, string>());
+const fn = observable(() => {
+  const a: TEST | string = TEST.A || 'ddd';
+  console.log(a);
+});
+
+fn();
+
+console.log(TEST.A, new Map<string, string>());
 
 export default TEST;
